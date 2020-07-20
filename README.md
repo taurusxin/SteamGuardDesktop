@@ -1,6 +1,6 @@
 # SteamGuardDesktop
 
-中文README
+[中文文档](https://github.com/taurusxin/SteamGuardDesktop/blob/master/README_zh-CN.md)
 
 A simple desktop steam guard token generation tool
 
