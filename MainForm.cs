@@ -51,7 +51,8 @@ namespace SteamGuardDesktop
 
             if (!File.Exists("config.json"))
             {
-                label1.Text = "Config first!";
+                linkLabel1.Text = "Config first!";
+                linkLabel1.Enabled = false;
                 timer1.Enabled = false;
                 Utils.FileWrite(Application.StartupPath + "\\config.json", Json.stringify(new SharedSecret()));
                 return;
@@ -69,8 +70,9 @@ namespace SteamGuardDesktop
             catch (Exception)
             {
                 code = "Secret invalid!";
-                this.label1.Text = code;
+                this.linkLabel1.Text = code;
                 timer1.Enabled = false;
+                linkLabel1.Enabled = false;
                 progressBar1.Value = 0;
                 return;
             }
@@ -84,7 +86,25 @@ namespace SteamGuardDesktop
         {
             long timestamp = Utils.GetSystemUnixTime();
             code = SteamAuth.GenerateSteamGuardCodeForTime(secret.SharedSecretString, timestamp);
-            this.label1.Text = code;
+            this.linkLabel1.Text = code;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string tmp = linkLabel1.Text;
+            Clipboard.SetText(tmp);
+            linkLabel1.Text = "Copied!";
+            Delay(1000);
+            linkLabel1.Text = tmp;
+        }
+
+        private static void Delay(int milliSecond)
+        {
+            int start = Environment.TickCount;
+            while (Math.Abs(Environment.TickCount - start) < milliSecond)//毫秒
+            {
+                Application.DoEvents();//可执行某无聊的操作
+            }
         }
     }
 }
