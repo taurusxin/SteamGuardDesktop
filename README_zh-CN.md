@@ -1,5 +1,7 @@
 # Steam 桌面令牌程序
 
+![运行截图](https://raw.githubusercontent.com/taurusxin/SteamGuardDesktop/master/sgd-screenshot.png)
+
 一个简单的 Steam 的桌面令牌程序
 
 # 开始
