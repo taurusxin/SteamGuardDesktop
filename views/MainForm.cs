@@ -91,7 +91,7 @@ namespace SteamGuardDesktop
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string tmp = linkLabel1.Text;
+            string tmp = code;
             Clipboard.SetText(tmp);
             linkLabel1.Text = "Copied!";
             Delay(1000);
